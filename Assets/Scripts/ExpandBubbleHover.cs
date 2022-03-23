@@ -4,27 +4,27 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SolveBubbleHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ExpandBubbleHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Image solveBubble;
+    public Image expBubble;
     private bool mouse_over = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        solveBubble.enabled = false;
+        expBubble.enabled = false;
     }
 
     void Update()
     {
         if (mouse_over)
         {
-            solveBubble.enabled = true;
+            expBubble.enabled = true;
         }
 
         else
         {
-            solveBubble.enabled = false;
+            expBubble.enabled = false;
         }
     }
 

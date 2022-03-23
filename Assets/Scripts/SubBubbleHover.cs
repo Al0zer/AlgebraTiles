@@ -31,7 +31,6 @@ public class SubBubbleHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData eventData)
     {
         mouse_over = true;
-        Debug.Log("mouse over");
     }
 
     public void OnPointerExit(PointerEventData eventData)

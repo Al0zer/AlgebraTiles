@@ -4,27 +4,27 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SolveBubbleHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class FactorBubbleHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Image solveBubble;
+    public Image factBubble;
     private bool mouse_over = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        solveBubble.enabled = false;
+        factBubble.enabled = false;
     }
 
     void Update()
     {
         if (mouse_over)
         {
-            solveBubble.enabled = true;
+            factBubble.enabled = true;
         }
 
         else
         {
-            solveBubble.enabled = false;
+            factBubble.enabled = false;
         }
     }
 
@@ -37,4 +37,5 @@ public class SolveBubbleHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         mouse_over = false;
     }
+
 }

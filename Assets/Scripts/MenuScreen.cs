@@ -29,4 +29,9 @@ public class MenuScreen : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
+
+    public void PlayerStatsButton()
+    {
+        SceneManager.LoadScene(5);
+    }
 }
