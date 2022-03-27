@@ -11,6 +11,7 @@ public class SolveTutorial : MonoBehaviour
 
     public GameObject square;
     public GameObject xTileManager;
+    public GameObject tile;
 
     public Toggle onesButton;
 
@@ -61,7 +62,6 @@ public class SolveTutorial : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
 
-                // modify this to allow multiple squares if necessary, or to allow changing which square is being checked
                 if (hit.collider == square.GetComponent<BoxCollider2D>() && xTileManager.activeSelf)
                 {
                     infoIndex++;
@@ -70,11 +70,21 @@ public class SolveTutorial : MonoBehaviour
         }
 
         //making x tile negative
+        //should check if the user clicked on the x tile, then moves onto the next step
+        //but it aint working lol
         if (infoIndex == 2)
         {
-            if (clicked)
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("lol");
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+
+                //if mouse clicks on x tile
+                if (hit.collider == tile.GetComponent<BoxCollider2D>())
+                {
+                    Debug.Log("nice");
+                    infoIndex++;
+                }
             }
         }
     }
