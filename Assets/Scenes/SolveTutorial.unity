@@ -715,6 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 8597193906888680489, guid: 4687834888003ac478c8ac1500563e3f, type: 3}
+  square: {fileID: 108522114}
 --- !u!1 &758976928
 GameObject:
   m_ObjectHideFlags: 0
