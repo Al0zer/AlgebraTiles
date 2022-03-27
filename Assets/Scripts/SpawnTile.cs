@@ -11,7 +11,6 @@ public class SpawnTile : MonoBehaviour
     Camera camera;
 
 
-
     public void Awake()
     {
         camera = Camera.main;

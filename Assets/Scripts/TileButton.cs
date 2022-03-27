@@ -4,28 +4,49 @@ using UnityEngine;
 
 public class TileButton : MonoBehaviour
 {
-    public GameObject spawnTileManager;
+    public GameObject onesTileManager;
+    public GameObject xTileManager;
     private bool tilesOn = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnTileManager.SetActive(false);
+        onesTileManager.SetActive(false);
+        xTileManager.SetActive(false);
     }
 
-    public void Pressed()
+    //if the ones tile button was pressed
+    public void OnesTile()
     {
         //if tiles button hasn't already been pressed
         if (!tilesOn)
         {
-            spawnTileManager.SetActive(true);
+            onesTileManager.SetActive(true);
             tilesOn = true;
         }
 
         //tiles button was already pressed, now we're "turning off" the tiles
         else
         {
-            spawnTileManager.SetActive(false);
+            onesTileManager.SetActive(false);
+            tilesOn = false;
+        }
+    }
+
+    //if the x tile button was pressed
+    public void XTile()
+    {
+        //if tiles button hasn't already been pressed
+        if (!tilesOn)
+        {
+            xTileManager.SetActive(true);
+            tilesOn = true;
+        }
+
+        //tiles button was already pressed, now we're "turning off" the tiles
+        else
+        {
+            xTileManager.SetActive(false);
             tilesOn = false;
         }
     }
