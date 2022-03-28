@@ -10,7 +10,10 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
     path: 
-    guid: 1df7f2a0057fbb6489afef3174287627
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/SolveTutorial.unity
+    guid: 50ef183bcd203994eae703946bf356f3
   - enabled: 1
     path: Assets/Scenes/SolveScene.unity
     guid: 65a3c17ec93e1c74e8e9fdaeaa05f35b

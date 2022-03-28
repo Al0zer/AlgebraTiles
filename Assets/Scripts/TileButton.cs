@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TileButton : MonoBehaviour
 {
@@ -49,5 +50,27 @@ public class TileButton : MonoBehaviour
             xTileManager.SetActive(false);
             tilesOn = false;
         }
+    }
+
+    //remove all tiles from the workspace
+    public void ClearButton()
+    {
+        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
+        foreach (GameObject obj in tiles)
+        {
+            Destroy(obj);
+        }
+    }
+
+    //return to start screen
+    public void HomeButton()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    //jump to solve scene
+    public void SkipTutorial()
+    {
+        SceneManager.LoadScene(2);
     }
 }

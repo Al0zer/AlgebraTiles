@@ -6,8 +6,7 @@ TagManager:
   tags:
   - SolveButton
   - Workspace
-  - PositiveX
-  - NegativeX
+  - Tile
   layers:
   - Default
   - TransparentFX
