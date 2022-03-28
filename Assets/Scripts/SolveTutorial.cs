@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SolveTutorial : MonoBehaviour
 {
@@ -11,13 +12,22 @@ public class SolveTutorial : MonoBehaviour
 
     public GameObject square;
     public GameObject xTileManager;
+    public GameObject oneTileManager;
     public GameObject tile;
+    public GameObject finalAnswer;
+    public GameObject EndPanel;
 
     public Toggle onesButton;
+    public Toggle xButton;
+    public Toggle x2Button;
 
     public TextMeshProUGUI stepText;
 
     public Button checkButton;
+    public Button clearButton;
+    public Button garbageButton;
+    public Button cancelOutButton;
+
     private bool clicked = false;
 
     void Start()
@@ -52,7 +62,7 @@ public class SolveTutorial : MonoBehaviour
         }
 
         //place x tile into workspace
-        if (infoIndex == 1)
+        else if (infoIndex == 1)
         {
             onesButton.interactable = false;
 
@@ -72,20 +82,91 @@ public class SolveTutorial : MonoBehaviour
         //making x tile negative
         //should check if the user clicked on the x tile, then moves onto the next step
         //but it aint working lol
-        if (infoIndex == 2)
+        else if (infoIndex == 2)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("mouse pressed");
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    Debug.Log("mouse pressed");
+            //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //    RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
 
-                //if mouse clicks on x tile
-                if (hit.collider == tile.GetComponent<BoxCollider2D>())
-                {
-                    Debug.Log("nice");
-                    infoIndex++;
-                }
+            //    //if mouse clicks on x tile
+            //    if (hit.collider == tile.GetComponent<BoxCollider2D>())
+            //    {
+            //        Debug.Log("nice");
+            //        infoIndex++;
+            //    }
+            //}
+
+            //this is temporary until i can get it to work
+            if (clicked)
+            {
+                clicked = false;
+                infoIndex++;
+            }
+        }
+
+        //building the rest of the model
+        else if (infoIndex == 3)
+        {
+            onesButton.interactable = true;
+            if (clicked)
+            {
+                clicked = false;
+                infoIndex++;
+            }
+        }
+
+        //move blocks left and right to isolate x
+        //I wanna temporarily disable the tile's sign switching script, so the user can drag 
+        //tiles without accidentally changing their signs
+        else if (infoIndex == 4)
+        {
+            stepText.text = ("Step 2: Solve for x");
+
+            onesButton.interactable = false;
+            xButton.interactable = false;
+            clearButton.interactable = false;
+            garbageButton.interactable = false;
+
+            xTileManager.SetActive(false);
+            oneTileManager.SetActive(false);
+
+            //GameObject.FindWithTag("Tile").GetComponent<SwitchTileSign>().enabled = false;
+
+            if (clicked)
+            {
+                clicked = false;
+                infoIndex++;
+            }
+        }
+
+        //cancel out tiles
+        else if (infoIndex == 5)
+        {
+            onesButton.gameObject.SetActive(false);
+            xButton.gameObject.SetActive(false);
+            x2Button.gameObject.SetActive(false);
+
+            cancelOutButton.gameObject.SetActive(true);
+
+            if (clicked)
+            {
+                clicked = false;
+                infoIndex++;
+            }
+        }
+
+        //enter the value
+        else if (infoIndex == 6)
+        {
+            stepText.text = ("Step 3: Answer");
+            finalAnswer.SetActive(true);
+
+            if (clicked)
+            {
+                clicked = false;
+                EndPanel.SetActive(true);
             }
         }
     }
@@ -93,5 +174,11 @@ public class SolveTutorial : MonoBehaviour
     void TaskOnClick()
     {
         clicked = true;
+    }
+
+    //if user presses "skip tutorial", or "first question" after tutorial
+    public void GoToSolve()
+    {
+        SceneManager.LoadScene(2);
     }
 }

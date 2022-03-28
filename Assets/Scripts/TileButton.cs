@@ -67,10 +67,4 @@ public class TileButton : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
-    //jump to solve scene
-    public void SkipTutorial()
-    {
-        SceneManager.LoadScene(2);
-    }
 }

@@ -33,8 +33,8 @@ public class SpawnTile : MonoBehaviour
                 Vector3 tilePos = camera.ScreenToWorldPoint(mousePos);
                 tilePos.z = -1f;
                 Instantiate(tile, tilePos, Quaternion.identity);
-                tile.tag = "Tile";
-                Debug.Log(tile.tag);
+
+                //tile.tag = "Tile";
             }   
         }
     }
