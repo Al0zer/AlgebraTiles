@@ -11,9 +11,8 @@ public class SolveTutorial : MonoBehaviour
     private int infoIndex;
 
     public GameObject square;
-    public GameObject xTileManager;
-    public GameObject oneTileManager;
-    public GameObject tile;
+    public TileCreationManager creationManager;
+
     public GameObject finalAnswer;
     public GameObject EndPanel;
 
@@ -70,9 +69,8 @@ public class SolveTutorial : MonoBehaviour
             {
                 // ray cast from the camera to the mouse position
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
-
-                if (hit.collider == square.GetComponent<BoxCollider2D>() && xTileManager.activeSelf)
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, 1 << LayerMask.NameToLayer("WorkSpace"));
+                if (hit.collider == square.GetComponent<BoxCollider2D>() && creationManager.XTileOn())
                 {
                     infoIndex++;
                 }
@@ -84,25 +82,18 @@ public class SolveTutorial : MonoBehaviour
         //but it aint working lol
         else if (infoIndex == 2)
         {
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    Debug.Log("mouse pressed");
-            //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //    RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
-
-            //    //if mouse clicks on x tile
-            //    if (hit.collider == tile.GetComponent<BoxCollider2D>())
-            //    {
-            //        Debug.Log("nice");
-            //        infoIndex++;
-            //    }
-            //}
-
-            //this is temporary until i can get it to work
-            if (clicked)
+            if (Input.GetMouseButtonDown(0))
             {
-                clicked = false;
-                infoIndex++;
+               Debug.Log("mouse pressed");
+               Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+               RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, 1 << LayerMask.NameToLayer("Tile"));
+
+               //if mouse clicks on x tile
+               // check the parent of the collider is a Tile
+               if (hit.collider.tag=="PositiveX")
+               {
+                   infoIndex++;
+               }
             }
         }
 
@@ -129,8 +120,7 @@ public class SolveTutorial : MonoBehaviour
             clearButton.interactable = false;
             garbageButton.interactable = false;
 
-            xTileManager.SetActive(false);
-            oneTileManager.SetActive(false);
+            creationManager.DisableTileCreation();
 
             //GameObject.FindWithTag("Tile").GetComponent<SwitchTileSign>().enabled = false;
 

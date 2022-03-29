@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8899057186314391955}
   - component: {fileID: 7882921887276928271}
   - component: {fileID: 6240567324987299163}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OnesTileNeg
-  m_TagString: Untagged
+  m_TagString: NegativeOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,3 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 3723542582431075781}
+  posTile: {fileID: 0}
+  negTile: {fileID: 0}

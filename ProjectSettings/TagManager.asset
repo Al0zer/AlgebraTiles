@@ -7,6 +7,10 @@ TagManager:
   - SolveButton
   - Workspace
   - Tile
+  - NegativeX
+  - PositiveX
+  - NegativeOne
+  - PositiveOne
   layers:
   - Default
   - TransparentFX

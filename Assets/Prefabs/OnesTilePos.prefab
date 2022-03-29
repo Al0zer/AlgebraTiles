@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 9180907908068057393}
   - component: {fileID: 3845425576017796817}
   - component: {fileID: 3533636373033827537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OnesTilePos
-  m_TagString: Tile
+  m_TagString: PositiveOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

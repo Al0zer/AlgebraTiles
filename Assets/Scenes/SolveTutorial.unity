@@ -469,7 +469,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &279437364
 GameObject:
@@ -883,51 +883,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &389431529
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 389431531}
-  - component: {fileID: 389431530}
-  m_Layer: 0
-  m_Name: XTilesManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &389431530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389431529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd5dcd98ece70041abfadf17ec60957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tile: {fileID: 4862876018925551609, guid: f1aea89f31765884e954005f183f3d9b, type: 3}
-  square: {fileID: 108522114}
---- !u!4 &389431531
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389431529}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5746248, y: -0.07903914, z: -2.2559216}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469741302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +965,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1048693508}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TileButton, Assembly-CSharp
         m_MethodName: HomeButton
         m_Mode: 1
@@ -1544,51 +1499,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691986633}
   m_CullTransparentMesh: 1
---- !u!1 &718044475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 718044476}
-  - component: {fileID: 718044477}
-  m_Layer: 0
-  m_Name: OnesTileManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &718044476
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718044475}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &718044477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718044475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd5dcd98ece70041abfadf17ec60957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tile: {fileID: 8597193906888680489, guid: 4687834888003ac478c8ac1500563e3f, type: 3}
-  square: {fileID: 108522114}
 --- !u!1 &758976928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1586,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1048693508}
-        m_TargetAssemblyTypeName: TileButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: TileCreationManager, Assembly-CSharp
         m_MethodName: XTile
         m_Mode: 1
         m_Arguments:
@@ -1898,9 +1808,7 @@ MonoBehaviour:
   - {fileID: 691986635}
   - {fileID: 2139902225}
   square: {fileID: 108522114}
-  xTileManager: {fileID: 389431529}
-  oneTileManager: {fileID: 718044475}
-  tile: {fileID: 4862876018925551609, guid: f1aea89f31765884e954005f183f3d9b, type: 3}
+  creationManager: {fileID: 1048693508}
   finalAnswer: {fileID: 1558251606}
   EndPanel: {fileID: 26170056}
   onesButton: {fileID: 1144508069}
@@ -1923,7 +1831,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811389513
 GameObject:
@@ -2452,7 +2360,7 @@ RectTransform:
   - {fileID: 1558251607}
   - {fileID: 26170057}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2471,8 +2379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5b32985e7525f4d94e84d1bc19940a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onesTileManager: {fileID: 718044475}
-  xTileManager: {fileID: 389431529}
+  onesTile: {fileID: 8597193906888680489, guid: 4687834888003ac478c8ac1500563e3f, type: 3}
+  xTile: {fileID: 4862876018925551609, guid: f1aea89f31765884e954005f183f3d9b, type: 3}
+  allowedArea: {fileID: 108522114}
 --- !u!1 &1072822425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2903,7 +2812,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1048693508}
-        m_TargetAssemblyTypeName: TileButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: TileCreationManager, Assembly-CSharp
         m_MethodName: OnesTile
         m_Mode: 1
         m_Arguments:
@@ -3627,7 +3536,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1048693508}
-        m_TargetAssemblyTypeName: TileButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: TileCreationManager, Assembly-CSharp
         m_MethodName: ClearButton
         m_Mode: 1
         m_Arguments:
@@ -5080,7 +4989,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2139902223
 GameObject:

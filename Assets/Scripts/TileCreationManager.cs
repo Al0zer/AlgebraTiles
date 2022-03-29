@@ -28,11 +28,21 @@ public class TileCreationManager : MonoBehaviour
         xTileOn = false;
     }
 
+    public bool OnesTileOn()
+    {
+        return onesTileOn;
+    }
+
     //if the x tile button was pressed
     public void XTile()
     {
         xTileOn = !xTileOn;
         onesTileOn = false;
+    }
+
+    public bool XTileOn()
+    {
+        return xTileOn;
     }
 
     //remove all tiles from the workspace
@@ -49,6 +59,11 @@ public class TileCreationManager : MonoBehaviour
     public void HomeButton()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void DisableTileCreation(){
+        onesTileOn = false;
+        xTileOn = false;
     }
 
     void Update()
