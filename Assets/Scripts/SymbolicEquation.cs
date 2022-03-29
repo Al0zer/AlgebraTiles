@@ -172,20 +172,40 @@ public abstract class SymbolicEquation
         }
         if(equationSide[MathSymbol.X] != 0){
             if(equationSide[MathSymbol.X_SQUARED] != 0){
-                out_string += " + ";
+                if(equationSide[MathSymbol.X] > 0){
+                    out_string += " + ";
+                }
+                else{
+                    out_string += " - ";
+                }
             }
             if(Math.Abs(equationSide[MathSymbol.X]) > 1){
-                out_string += equationSide[MathSymbol.X] + "x";
+                out_string += Math.Abs(equationSide[MathSymbol.X]) + "x";
             }
-            else{
+            else if(equationSide[MathSymbol.X_SQUARED] == 0){
+                if(equationSide[MathSymbol.X] > 0){
+                    out_string += "x";
+                }
+                else{
+                    out_string += "-x";
+                }
+            }else{
                 out_string += "x";
             }
         }
         if(equationSide[MathSymbol.ONE] != 0){
             if(equationSide[MathSymbol.X_SQUARED] != 0 || equationSide[MathSymbol.X] != 0){
-                out_string += " + ";
+                if(equationSide[MathSymbol.ONE] > 0){
+                    out_string += " + ";
+                }
+                else{
+                    out_string += " - ";
+                }
+                out_string += Math.Abs(equationSide[MathSymbol.ONE]);
             }
-            out_string += equationSide[MathSymbol.ONE];
+            else{
+                out_string += equationSide[MathSymbol.ONE];
+            }
         }else if(equationSide[MathSymbol.X_SQUARED] == 0 && equationSide[MathSymbol.X] == 0){
             out_string += "0";
         }
@@ -198,5 +218,45 @@ public abstract class SymbolicEquation
         out_string += " = ";
         out_string += equationSideToString(this.rightSide);
         return out_string;
+    }
+
+    public bool Equivalent(SymbolicEquation other){
+        // check left sides identical
+        bool leftSideValid = true;
+        foreach(MathSymbol symbol in this.leftSide.Keys){
+            if(this.leftSide[symbol] != other.leftSide[symbol]){
+                leftSideValid = false;
+            }
+        }
+        // check right sides identical
+        bool rightSideValid = true;
+        foreach(MathSymbol symbol in this.rightSide.Keys){
+            if(this.rightSide[symbol] != other.rightSide[symbol]){
+                rightSideValid = false;
+            }
+        }
+
+        // check if left and right sides are the same
+        if(leftSideValid && rightSideValid){
+            return true;
+        }
+
+        // otherwise check if one equation is the negative of the other
+        leftSideValid = true;
+        rightSideValid = true;
+
+        foreach(MathSymbol symbol in this.leftSide.Keys){
+            if(this.leftSide[symbol] != -other.leftSide[symbol]){
+                leftSideValid = false;
+            }
+        }
+
+        foreach(MathSymbol symbol in this.rightSide.Keys){
+            if(this.rightSide[symbol] != -other.rightSide[symbol]){
+                rightSideValid = false;
+            }
+        }
+
+        return leftSideValid && rightSideValid;
     }
 }

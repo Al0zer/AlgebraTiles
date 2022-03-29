@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class SwitchTileSign : MonoBehaviour
 {
-    private bool isNegative = false;
-    public GameObject tile;
 
-    public Sprite posTile;
-    public Sprite negTile;
+    public GameObject negated;
 
     // Update is called once per frame
     void Update()
@@ -19,19 +16,11 @@ public class SwitchTileSign : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
 
-            if (hit.collider == tile.GetComponent<BoxCollider2D>())
+            if (hit.collider == this.GetComponentInParent<BoxCollider2D>())
             {
-                if (!isNegative)
-                {
-                    this.GetComponent<SpriteRenderer>().sprite = negTile;
-                    isNegative = true;
-                }
-
-                else
-                {
-                    this.GetComponent<SpriteRenderer>().sprite = posTile;
-                    isNegative = false;
-                }
+                GameObject newTile = Instantiate(negated, this.transform.position, this.transform.rotation);
+                newTile.transform.parent = this.transform.parent;
+                Destroy(this.transform.gameObject);
             }
         }
     }

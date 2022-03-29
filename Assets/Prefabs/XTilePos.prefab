@@ -122,6 +122,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639f86254fc8334d9488fd2aadae6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 4862876018925551609}
-  posTile: {fileID: 21300000, guid: e3bb7178c573192489a98a8587a7529d, type: 3}
-  negTile: {fileID: 21300000, guid: b32ec4a597261a24495e906d29a411a4, type: 3}
+  negated: {fileID: 1108567929957796141, guid: b455e54c2d672e3478763d187d377174, type: 3}

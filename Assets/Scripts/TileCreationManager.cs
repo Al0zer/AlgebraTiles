@@ -83,9 +83,11 @@ public class TileCreationManager : MonoBehaviour
                 tilePos.z = -1f;
 
                 if(onesTileOn){
-                    Instantiate(onesTile, tilePos, Quaternion.identity);
+                    GameObject newTile = Instantiate(onesTile, tilePos, Quaternion.identity);
+                    newTile.transform.parent = hit.collider.transform;
                 }else if(xTileOn){
-                    Instantiate(xTile, tilePos, Quaternion.identity);
+                    GameObject newTile = Instantiate(xTile, tilePos, Quaternion.identity);
+                    newTile.transform.parent = hit.collider.transform;
                 }
 
                 //tile.tag = "Tile";
