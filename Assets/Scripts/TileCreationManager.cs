@@ -80,7 +80,7 @@ public class TileCreationManager : MonoBehaviour
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = Mathf.Abs(viewCamera.transform.position.z);
                 Vector3 tilePos = viewCamera.ScreenToWorldPoint(mousePos);
-                tilePos.z = -1f;
+                tilePos.z = -1.5f;
 
                 if(onesTileOn){
                     GameObject newTile = Instantiate(onesTile, tilePos, Quaternion.identity);
