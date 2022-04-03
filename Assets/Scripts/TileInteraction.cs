@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,10 +36,8 @@ public class TileInteraction : MonoBehaviour
 
             hit = Physics2D.Raycast(ray.origin, ray.direction);
             if(hit.transform != null){
-                Debug.Log("Hit "+LayerMask.LayerToName(hit.transform.gameObject.layer));
                 if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Tile"))
                 {
-                    Debug.Log("Hit tile");
                     targetTile = hit.transform.gameObject;
 
                     leftSideOfWorkspace = targetTile.transform.position.x < horizontalDivider;
@@ -97,6 +94,8 @@ public class TileInteraction : MonoBehaviour
                         Destroy(targetTile);
                     }
                 }
+
+                TileSnapping.trySnap(targetTile);
             }
             targetTile = null;
             dragging = false;
@@ -129,6 +128,8 @@ public class TileInteraction : MonoBehaviour
     private float distanceFromButtonDown(){
         return Vector2.Distance(clickDownPosition, new Vector2(Input.mousePosition.x, Input.mousePosition.y));
     }
+
+   
 
     public void CancelOut()
     {

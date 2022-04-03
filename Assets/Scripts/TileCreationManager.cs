@@ -86,9 +86,11 @@ public class TileCreationManager : MonoBehaviour
                 if(onesTileOn){
                     GameObject newTile = Instantiate(onesTile, tilePos, Quaternion.identity);
                     newTile.transform.parent = hit.collider.transform;
+                    TileSnapping.trySnap(newTile);
                 }else if(xTileOn){
                     GameObject newTile = Instantiate(xTile, tilePos, Quaternion.identity);
                     newTile.transform.parent = hit.collider.transform;
+                    TileSnapping.trySnap(newTile);
                 }
 
                 //tile.tag = "Tile";
