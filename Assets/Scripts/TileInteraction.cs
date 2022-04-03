@@ -16,10 +16,13 @@ public class TileInteraction : MonoBehaviour
     private bool leftSideOfWorkspace = false;
 
     private bool dragging = false;
+
+    private List<GameObject> selectedTiles;
+    private bool cancelOut = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        selectedTiles = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -49,10 +52,38 @@ public class TileInteraction : MonoBehaviour
         }
         if(Input.GetMouseButtonUp(0) && targetTile != null)
         {
+            // not dragging, just a click
             if(!dragging)
             {
-                // not dragging, just a click
-                targetTile.GetComponent<SwitchTileSign>().SwitchSign();
+                //canceling out tiles
+                if (cancelOut)
+                {
+                    selectedTiles.Add(targetTile);
+
+                    if(selectedTiles.Count > 1)
+                    {
+                        for (int i = 0; i < selectedTiles.Count; i++)
+                        {
+                            //dear god i am sorry for this
+                            if ((selectedTiles[i].tag == "PositiveOne" && selectedTiles[i+1].tag == "NegativeOne")
+                                || (selectedTiles[i].tag == "NegativeOne"&& selectedTiles[i+1].tag == "PositiveOne")
+                                || (selectedTiles[i].tag == "PositiveX" && selectedTiles[i + 1].tag == "NegativeX")
+                                || (selectedTiles[i].tag == "NegativeX" && selectedTiles[i + 1].tag == "PositiveX"))
+                            {
+                                Destroy(selectedTiles[i]);
+                                Destroy(selectedTiles[i+1]);
+
+                                selectedTiles.Remove(selectedTiles[i+1]);
+                                selectedTiles.Remove(selectedTiles[i]);
+                            }
+                        }
+                    }
+
+                //cancel out was not clicked, just switching tile signs
+                }else{
+                    targetTile.GetComponent<SwitchTileSign>().SwitchSign();
+                }
+
             }else{
                 // cast a ray and see if we hit garbage bin
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -97,5 +128,21 @@ public class TileInteraction : MonoBehaviour
 
     private float distanceFromButtonDown(){
         return Vector2.Distance(clickDownPosition, new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+    }
+
+    public void CancelOut()
+    {
+        //if cancel out button hasn't already been pressed
+        if (!cancelOut)
+        {
+            cancelOut = true;
+        }
+
+        //cancel out was already pressed, now turning it off
+        else
+        {
+            selectedTiles.Clear();
+            cancelOut = false;
+        }
     }
 }
