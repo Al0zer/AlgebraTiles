@@ -174,8 +174,8 @@ public class SubTutorial : MonoBehaviour
     }
 
     //if user presses "skip tutorial", or "first question" after tutorial
-    public void GoToSolve()
+    public void GoToSub()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
     }
 }

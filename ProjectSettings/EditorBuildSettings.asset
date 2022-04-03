@@ -8,15 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SolveTutorial.unity
     guid: 50ef183bcd203994eae703946bf356f3
   - enabled: 1
     path: Assets/Scenes/SolveScene.unity
     guid: 65a3c17ec93e1c74e8e9fdaeaa05f35b
+  - enabled: 1
+    path: Assets/Scenes/SubTutorial.unity
+    guid: 42e4b4b9c8110d34fb6a59da3a97695b
   - enabled: 1
     path: Assets/Scenes/SubScene.unity
     guid: 8ace4cf67a75fd749b9fbb6e9c73cc0d

@@ -14,24 +14,24 @@ public class MenuScreen : MonoBehaviour
     //substitution mode
     public void SubButton()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     //expand mode
     public void ExpandButton()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(5);
     }
 
 
     //factor mode
     public void FactorButton()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(6);
     }
 
     public void PlayerStatsButton()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(7);
     }
 }

@@ -1606,8 +1606,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TileButton, Assembly-CSharp
+      - m_Target: {fileID: 1950117270}
+        m_TargetAssemblyTypeName: TileCreationManager, Assembly-CSharp
         m_MethodName: HomeButton
         m_Mode: 1
         m_Arguments:
@@ -2939,7 +2939,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1950117270}
         m_TargetAssemblyTypeName: TileCreationManager, Assembly-CSharp
         m_MethodName: ClearButton
         m_Mode: 1
@@ -3868,9 +3868,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SolveTutorial, Assembly-CSharp
-        m_MethodName: GoToSolve
+      - m_Target: {fileID: 212469355}
+        m_TargetAssemblyTypeName: SubTutorial, Assembly-CSharp
+        m_MethodName: GoToSub
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
