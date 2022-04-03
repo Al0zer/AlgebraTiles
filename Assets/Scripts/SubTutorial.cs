@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
+using TMPro;
 
-public class SolveTutorial : MonoBehaviour
+public class SubTutorial : MonoBehaviour
 {
-    public Image[] info;
+    public GameObject[] info;
     private int infoIndex;
 
     public GameObject workspace;
@@ -16,22 +16,29 @@ public class SolveTutorial : MonoBehaviour
     public GameObject finalAnswer;
     public GameObject EndPanel;
 
+    public Button checkButton1;
+    public Button checkButton2;
+    public Button checkButton3;
+
+    public Button cancelOutButton;
+    public Button clearButton;
+    public GameObject garbageBin;
+
     public Toggle onesButton;
     public Toggle xButton;
     public Toggle x2Button;
 
-    public TextMeshProUGUI stepText;
-
-    public Button checkButton;
-    public Button clearButton;
-    public Button cancelOutButton;
-    public GameObject garbageBin;
+    public TextMeshProUGUI step2;
+    public TextMeshProUGUI step3;
 
     private bool clicked = false;
 
+    // Start is called before the first frame update
     void Start()
     {
-        checkButton.onClick.AddListener(TaskOnClick);
+        checkButton1.onClick.AddListener(TaskOnClick);
+        checkButton2.onClick.AddListener(TaskOnClick);
+        checkButton3.onClick.AddListener(TaskOnClick);
     }
 
     // Update is called once per frame
@@ -41,20 +48,22 @@ public class SolveTutorial : MonoBehaviour
         {
             if (i == infoIndex)
             {
-                info[i].enabled = true;
+                info[i].SetActive(true);
             }
             else
             {
-                info[i].enabled = false;
+                info[i].SetActive(false);
             }
         }
 
         //pressing check button
-        if (infoIndex == 0)
+        if(infoIndex == 0)
         {
+            step2.enabled = false;
+            step3.enabled = false;
             onesButton.interactable = false;
             xButton.interactable = false;
-            stepText.text = ("Step 1: Build your model");
+
             if (clicked)
             {
                 clicked = false;
@@ -62,10 +71,12 @@ public class SolveTutorial : MonoBehaviour
             }
         }
 
-        //place x tile into workspace
-        else if (infoIndex == 1)
+        //step 1: build your model
+        //placing x tile on workspace
+        if(infoIndex == 1)
         {
             xButton.interactable = true;
+
             if (Input.GetMouseButtonDown(0))
             {
                 // ray cast from the camera to the mouse position
@@ -78,30 +89,27 @@ public class SolveTutorial : MonoBehaviour
             }
         }
 
-        //making x tile negative
-        //should check if the user clicked on the x tile, then moves onto the next step
-        //but it aint working lol
-        else if (infoIndex == 2)
+        //placing ones tile on workspace
+        if (infoIndex == 2)
         {
+            xButton.interactable = false;
+            onesButton.interactable = true;
+
             if (Input.GetMouseButtonDown(0))
             {
-               Debug.Log("mouse pressed");
-               Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-               RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, 1 << LayerMask.NameToLayer("Tile"));
-
-               //if mouse clicks on x tile
-               // check the parent of the collider is a Tile
-               if (hit.collider.tag=="PositiveX")
-               {
-                   infoIndex++;
-               }
+                // ray cast from the camera to the mouse position
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, 1 << LayerMask.NameToLayer("WorkSpace"));
+                if (hit.collider == workspace.GetComponent<BoxCollider2D>() && creationManager.OnesTileOn())
+                {
+                    infoIndex++;
+                }
             }
         }
 
-        //building the rest of the model
-        else if (infoIndex == 3)
+        //making ones tile negative
+        if (infoIndex == 3)
         {
-            onesButton.interactable = true;
             if (clicked)
             {
                 clicked = false;
@@ -109,39 +117,33 @@ public class SolveTutorial : MonoBehaviour
             }
         }
 
-        //move blocks left and right to isolate x
-        //I wanna temporarily disable the tile's sign switching script, so the user can drag 
-        //tiles without accidentally changing their signs
-        else if (infoIndex == 4)
+        //step 2: model the expression
+        //placing blocks to model the equation, replacing x with ones values
+        if (infoIndex == 4)
         {
-            stepText.text = ("Step 2: Solve for x");
+            step2.enabled = true;
 
-            onesButton.interactable = false;
-            xButton.interactable = false;
-            clearButton.interactable = false;
-            garbageBin.SetActive(false);
+            if (clicked)
+            {
+                clicked = false;
+                infoIndex++;
+            }
+        }
 
+        //using the cancel out button
+        if(infoIndex == 5)
+        {
             creationManager.DisableTileCreation();
 
-            //GameObject.FindWithTag("Tile").GetComponent<SwitchTileSign>().enabled = false;
-
-            if (clicked)
-            {
-                clicked = false;
-                infoIndex++;
-            }
-        }
-
-        //cancel out tiles
-        //still gotta do this one lol
-        else if (infoIndex == 5)
-        {
             onesButton.gameObject.SetActive(false);
             xButton.gameObject.SetActive(false);
             x2Button.gameObject.SetActive(false);
 
             cancelOutButton.gameObject.SetActive(true);
 
+            clearButton.interactable = false;
+            garbageBin.SetActive(false);
+
             if (clicked)
             {
                 clicked = false;
@@ -149,10 +151,13 @@ public class SolveTutorial : MonoBehaviour
             }
         }
 
-        //enter the value
-        else if (infoIndex == 6)
+        //step 3: answer
+        if(infoIndex == 6)
         {
-            stepText.text = ("Step 3: Answer");
+            step3.enabled = true;
+            xButton.interactable = false;
+            onesButton.interactable = false;
+
             finalAnswer.SetActive(true);
 
             if (clicked)

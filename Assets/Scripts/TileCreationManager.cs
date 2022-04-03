@@ -75,8 +75,9 @@ public class TileCreationManager : MonoBehaviour
             Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
 
-            // modify this to allow multiple squares if necessary, or to allow changing which square is being checked
-            if(hit.collider == allowedArea.GetComponent<BoxCollider2D>()){
+            // modify this to allow multiple squares if necessary, or to allow changing which workspace is being checked
+            if(hit.collider == allowedArea.GetComponent<BoxCollider2D>())
+            {
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = Mathf.Abs(viewCamera.transform.position.z);
                 Vector3 tilePos = viewCamera.ScreenToWorldPoint(mousePos);

@@ -377,7 +377,7 @@ Transform:
   m_LocalScale: {x: 11, y: 5.4000006, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &108522117
 BoxCollider2D:
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   - {fileID: 1118263768}
   - {fileID: 691986635}
   - {fileID: 2139902225}
-  square: {fileID: 108522114}
+  workspace: {fileID: 108522114}
   creationManager: {fileID: 1048693508}
   finalAnswer: {fileID: 1558251606}
   EndPanel: {fileID: 26170056}
@@ -1862,8 +1862,8 @@ MonoBehaviour:
   stepText: {fileID: 95169880}
   checkButton: {fileID: 1309295973}
   clearButton: {fileID: 1487276806}
-  garbageButton: {fileID: 286845386}
   cancelOutButton: {fileID: 2092697177}
+  garbageBin: {fileID: 1291287876}
 --- !u!4 &772926172
 Transform:
   m_ObjectHideFlags: 0
@@ -2693,7 +2693,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SOLVE (tutorial)
+  m_text: SOLVE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a5a2eda3b25a764682283875d0d7083, type: 2}
   m_sharedMaterial: {fileID: 5838026838878445950, guid: 0a5a2eda3b25a764682283875d0d7083, type: 2}
@@ -4403,7 +4403,7 @@ Transform:
   m_LocalScale: {x: 16.5, y: 9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1811177297
 GameObject:
