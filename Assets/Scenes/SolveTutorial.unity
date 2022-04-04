@@ -431,10 +431,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.44505042, y: 0.42164603}
-      - {x: -0.45054537, y: -0.41418377}
-      - {x: 0.45970365, y: -0.41418368}
-      - {x: 0.457872, y: 0.42910826}
+    - - {x: -0.44761398, y: -0.34549063}
+      - {x: -0.44559902, y: -0.42201775}
+      - {x: -0.35832605, y: -0.41380927}
+      - {x: -0.360341, y: -0.34549072}
 --- !u!1 &171670445
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +876,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 60
-  m_CharacterLimit: 10
+  m_CharacterLimit: 2
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
