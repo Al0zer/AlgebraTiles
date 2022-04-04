@@ -19,6 +19,8 @@ public class TileInteraction : MonoBehaviour
 
     private bool dragging = false;
 
+    private int signChangesDuringDrag = 0;
+
     public bool dragToDelete = true;
 
     public bool allowSignChange = true;
@@ -50,6 +52,8 @@ public class TileInteraction : MonoBehaviour
                     leftSideOfWorkspace = targetTile.transform.position.x < horizontalDivider;
 
                     tileStartPosition = targetTile.transform.position;
+
+                    signChangesDuringDrag = 0;
                 }
             }
             else{
@@ -104,6 +108,10 @@ public class TileInteraction : MonoBehaviour
                     }
                     else{
                         targetTile.transform.position = tileStartPosition;
+
+                        if(signChangesDuringDrag %2 == 1){
+                            targetTile.GetComponent<SwitchTileSign>().SwitchSign();
+                        }
                     }
                 
                 }
@@ -129,10 +137,12 @@ public class TileInteraction : MonoBehaviour
                 if(mousePos.x > horizontalDivider && leftSideOfWorkspace){
                     targetTile = targetTile.GetComponent<SwitchTileSign>().SwitchSign();
                     leftSideOfWorkspace = false;
+                    signChangesDuringDrag += 1;
                 }
                 else if (mousePos.x < horizontalDivider && !leftSideOfWorkspace){
                     targetTile = targetTile.GetComponent<SwitchTileSign>().SwitchSign();
                     leftSideOfWorkspace = true;
+                    signChangesDuringDrag += 1;
                 }
             }
         }
