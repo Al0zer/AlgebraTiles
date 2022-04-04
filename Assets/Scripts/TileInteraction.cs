@@ -57,24 +57,20 @@ public class TileInteraction : MonoBehaviour
                 {
                     selectedTiles.Add(targetTile);
 
-                    if(selectedTiles.Count > 1)
-                    {
-                        for (int i = 0; i < selectedTiles.Count; i++)
-                        {
-                            //dear god i am sorry for this
-                            if ((selectedTiles[i].tag == "PositiveOne" && selectedTiles[i+1].tag == "NegativeOne")
-                                || (selectedTiles[i].tag == "NegativeOne"&& selectedTiles[i+1].tag == "PositiveOne")
-                                || (selectedTiles[i].tag == "PositiveX" && selectedTiles[i + 1].tag == "NegativeX")
-                                || (selectedTiles[i].tag == "NegativeX" && selectedTiles[i + 1].tag == "PositiveX"))
-                            {
-                                Destroy(selectedTiles[i]);
-                                Destroy(selectedTiles[i+1]);
-
-                                selectedTiles.Remove(selectedTiles[i+1]);
-                                selectedTiles.Remove(selectedTiles[i]);
-                            }
-                        }
+                    if(selectedTiles.Count > 2){
+                        selectedTiles.RemoveAt(0);
                     }
+
+                    if ((selectedTiles[0].tag == "PositiveOne" && selectedTiles[1].tag == "NegativeOne")
+                        || (selectedTiles[0].tag == "NegativeOne"&& selectedTiles[1].tag == "PositiveOne")
+                        || (selectedTiles[0].tag == "PositiveX" && selectedTiles[1].tag == "NegativeX")
+                        || (selectedTiles[0].tag == "NegativeX" && selectedTiles[1].tag == "PositiveX"))
+                    {
+                        Destroy(selectedTiles[0]);
+                        Destroy(selectedTiles[1]);
+                        selectedTiles.Clear();
+                    }
+                
 
                 //cancel out was not clicked, just switching tile signs
                 }else{
@@ -145,5 +141,11 @@ public class TileInteraction : MonoBehaviour
             selectedTiles.Clear();
             cancelOut = false;
         }
+    }
+
+    public void ResetCancelOut()
+    {
+        cancelOut = false;
+        selectedTiles = new List<GameObject>();
     }
 }

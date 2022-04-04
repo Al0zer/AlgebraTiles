@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine;
 
 public abstract class SymbolicEquation
@@ -164,10 +165,10 @@ public abstract class SymbolicEquation
         String out_string = "";
         if(equationSide[MathSymbol.X_SQUARED] != 0){
             if(Math.Abs(equationSide[MathSymbol.X_SQUARED]) > 1){
-                out_string += equationSide[MathSymbol.X_SQUARED] + "x^2";
+                out_string += equationSide[MathSymbol.X_SQUARED] + "x²";
             }
             else{
-                out_string += "x^2";
+                out_string += "x²";
             }
         }
         if(equationSide[MathSymbol.X] != 0){
@@ -178,19 +179,20 @@ public abstract class SymbolicEquation
                 else{
                     out_string += " - ";
                 }
-            }
-            if(Math.Abs(equationSide[MathSymbol.X]) > 1){
-                out_string += Math.Abs(equationSide[MathSymbol.X]) + "x";
-            }
-            else if(equationSide[MathSymbol.X_SQUARED] == 0){
-                if(equationSide[MathSymbol.X] > 0){
+                if(Math.Abs(equationSide[MathSymbol.X]) > 1){
+                    out_string += Math.Abs(equationSide[MathSymbol.X]) + "x";
+                }else{
                     out_string += "x";
                 }
-                else{
+            }
+            else{
+                if(Math.Abs(equationSide[MathSymbol.X]) > 1){
+                    out_string += equationSide[MathSymbol.X] + "x";
+                }else if(equationSide[MathSymbol.X] > 0){
+                    out_string += "x";
+                }else{
                     out_string += "-x";
                 }
-            }else{
-                out_string += "x";
             }
         }
         if(equationSide[MathSymbol.ONE] != 0){
@@ -222,41 +224,47 @@ public abstract class SymbolicEquation
 
     public bool Equivalent(SymbolicEquation other){
         // check left sides identical
-        bool leftSideValid = true;
-        foreach(MathSymbol symbol in this.leftSide.Keys){
+        bool leftSideNormal = true;
+        bool rightSideNormal = true;
+        bool leftSideSwap = true;
+        bool rightSideSwap = true;
+        bool leftSideNegative = true;
+        bool rightSideNegative = true;
+        bool leftSideSwapNegative = true;
+        bool rightSideSwapNegative = true;
+        IEnumerable<SymbolicEquation.MathSymbol> combinedKeys = this.leftSide.Keys.Union(other.leftSide.Keys);
+        foreach(MathSymbol symbol in combinedKeys){
             if(this.leftSide[symbol] != other.leftSide[symbol]){
-                leftSideValid = false;
+                leftSideNormal = false;
             }
-        }
-        // check right sides identical
-        bool rightSideValid = true;
-        foreach(MathSymbol symbol in this.rightSide.Keys){
             if(this.rightSide[symbol] != other.rightSide[symbol]){
-                rightSideValid = false;
+                rightSideNormal = false;
             }
-        }
 
-        // check if left and right sides are the same
-        if(leftSideValid && rightSideValid){
-            return true;
-        }
+            if(this.leftSide[symbol] != other.rightSide[symbol]){
+                leftSideSwap = false;
+            }
 
-        // otherwise check if one equation is the negative of the other
-        leftSideValid = true;
-        rightSideValid = true;
+            if(this.rightSide[symbol] != other.leftSide[symbol]){
+                rightSideSwap = false;
+            }
 
-        foreach(MathSymbol symbol in this.leftSide.Keys){
             if(this.leftSide[symbol] != -other.leftSide[symbol]){
-                leftSideValid = false;
+                leftSideNegative = false;
             }
-        }
 
-        foreach(MathSymbol symbol in this.rightSide.Keys){
             if(this.rightSide[symbol] != -other.rightSide[symbol]){
-                rightSideValid = false;
+                rightSideNegative = false;
+            }
+
+            if(this.leftSide[symbol] != -other.rightSide[symbol]){
+                leftSideSwapNegative = false;
+            }
+
+            if(this.rightSide[symbol] != -other.leftSide[symbol]){
+                rightSideSwapNegative = false;
             }
         }
-
-        return leftSideValid && rightSideValid;
+        return (leftSideNormal && rightSideNormal) || (leftSideSwap && rightSideSwap) || (leftSideNegative && rightSideNegative) || (leftSideSwapNegative && rightSideSwapNegative);
     }
 }

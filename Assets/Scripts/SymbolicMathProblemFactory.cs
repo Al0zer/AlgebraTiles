@@ -5,10 +5,12 @@ using UnityEngine;
 public class SymbolicMathProblemGenerator
 {
     public static SymbolicMathProblem.SolveTypeProblem generateSolveProblem(){
-        int leftSideOnes = Random.Range(-5, 5);
-        int leftSideX = Random.Range(-5, 5);
-        int rightSideOnes = Random.Range(-5, 5);
-        int rightSideX = Random.Range(-5, 5);
+        int addOnes = Random.Range(-5, 5);
+        int addXs = Random.Range(-5, 5);
+        int leftSideOnes = addOnes;
+        int leftSideX = Random.Range(-5, 5) + addXs;
+        int rightSideOnes = Random.Range(-5, 5) + addOnes;
+        int rightSideX = addXs;
         return new SymbolicMathProblem.SolveTypeProblem(leftSideX, leftSideOnes, rightSideX, rightSideOnes);
     }
 

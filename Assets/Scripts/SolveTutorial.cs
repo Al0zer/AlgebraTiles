@@ -111,7 +111,8 @@ public class SolveTutorial : MonoBehaviour
 
             if (clicked)
             {
-                if (evaluator.problem.ToString() == "-x + 3 = 1")
+                SymbolicMathProblem.SolveTypeProblem p = evaluator.EvaluateWorkSpace();
+                if (p.ToString() == "-x + 3 = 1")
                 {
                     clicked = false;
                     infoIndex++;
@@ -141,7 +142,8 @@ public class SolveTutorial : MonoBehaviour
 
             if (clicked)
             {
-                if(evaluator.problem.ToString() == "2 = x")
+                SymbolicMathProblem.SolveTypeProblem p = evaluator.EvaluateWorkSpace();
+                if(p.Equivalent(new SymbolicMathProblem.SolveTypeProblem(1, 0, 0, 2))) // x = 2
                 {
                     clicked = false;
                     infoIndex++;

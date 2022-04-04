@@ -8,9 +8,8 @@ public class SolveProblemEvaluator : MonoBehaviour
     public float horizontalDivider;
     // the parent of where all the children are
     public GameObject workSpace;
-    public SymbolicMathProblem.SolveTypeProblem problem;
 
-    public void EvaluateWorkSpace(){
+    public SymbolicMathProblem.SolveTypeProblem EvaluateWorkSpace(){
         int leftSideOneCount = 0;
         int leftSideXCount = 0;
         int rightSideOneCount = 0;
@@ -20,7 +19,6 @@ public class SolveProblemEvaluator : MonoBehaviour
             GameObject childObject = child.gameObject;
 
             if(childObject.layer == LayerMask.NameToLayer("Tile")){
-                Debug.Log(childObject.transform.position.x+ " "+childObject.tag);
                 if(childObject.transform.position.x < horizontalDivider){
                     if(childObject.CompareTag("PositiveOne")){
                         leftSideOneCount++;
@@ -50,8 +48,6 @@ public class SolveProblemEvaluator : MonoBehaviour
             }
         }
 
-        problem = new SymbolicMathProblem.SolveTypeProblem(leftSideXCount, leftSideOneCount, rightSideXCount, rightSideOneCount);
-
-        Debug.Log(problem.ToString());
+        return new SymbolicMathProblem.SolveTypeProblem(leftSideXCount, leftSideOneCount, rightSideXCount, rightSideOneCount);
     }
 }

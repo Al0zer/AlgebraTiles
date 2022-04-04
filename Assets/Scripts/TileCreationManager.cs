@@ -48,10 +48,9 @@ public class TileCreationManager : MonoBehaviour
     //remove all tiles from the workspace
     public void ClearButton()
     {
-        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
-        foreach (GameObject obj in tiles)
+        foreach (Transform obj in allowedArea.transform)
         {
-            Destroy(obj);
+            Destroy(obj.gameObject);
         }
     }
     public void DisableTileCreation(){
