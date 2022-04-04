@@ -307,7 +307,6 @@ GameObject:
   - component: {fileID: 108522116}
   - component: {fileID: 108522115}
   - component: {fileID: 108522117}
-  - component: {fileID: 108522118}
   m_Layer: 3
   m_Name: WorkSpace
   m_TagString: Workspace
@@ -406,35 +405,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9076244, y: 0.8468366}
   m_EdgeRadius: 0
---- !u!60 &108522118
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 108522114}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.44761398, y: -0.34549063}
-      - {x: -0.44559902, y: -0.42201775}
-      - {x: -0.35832605, y: -0.41380927}
-      - {x: -0.360341, y: -0.34549072}
 --- !u!1 &171670445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,7 +1351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &496595723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2012,10 +1982,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1048693508}
         m_TargetAssemblyTypeName: TileCreationManager, Assembly-CSharp
         m_MethodName: XTile
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 758976930}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3389,10 +3359,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1048693508}
         m_TargetAssemblyTypeName: TileCreationManager, Assembly-CSharp
         m_MethodName: OnesTile
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1144508069}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5808,10 +5778,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1811177298}
         m_TargetAssemblyTypeName: TileInteraction, Assembly-CSharp
         m_MethodName: CancelOut
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2092697177}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
