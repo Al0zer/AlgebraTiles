@@ -575,7 +575,7 @@ Transform:
   m_LocalScale: {x: 10.741747, y: 1.8761244, z: 1}
   m_Children: []
   m_Father: {fileID: 2105501416}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &281494418
 GameObject:
@@ -854,10 +854,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1950117270}
         m_TargetAssemblyTypeName: TileCreationManager, Assembly-CSharp
         m_MethodName: XTile
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 358130433}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1496,7 +1496,7 @@ Transform:
   m_LocalScale: {x: 10.741747, y: 1.8761244, z: 1}
   m_Children: []
   m_Father: {fileID: 2105501416}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &610722147
 GameObject:
@@ -2892,7 +2892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &878550611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4049,6 +4049,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288738004}
   m_CullTransparentMesh: 1
+--- !u!1 &1334211543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1334211545}
+  - component: {fileID: 1334211544}
+  m_Layer: 0
+  m_Name: SubProblemEvaluator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1334211544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334211543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75f4d0e808e766a4c9f118744fe62e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  workSpace1: {fileID: 2105501415}
+--- !u!4 &1334211545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334211543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.79945225, y: -0.21368699, z: -1.4628594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1338224233
 GameObject:
   m_ObjectHideFlags: 0
@@ -5050,7 +5094,7 @@ Transform:
   m_LocalScale: {x: 1.15, y: 1.02, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1628622574
 GameObject:
@@ -5274,10 +5318,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1950117270}
         m_TargetAssemblyTypeName: TileCreationManager, Assembly-CSharp
         m_MethodName: OnesTile
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1651147647}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5568,51 +5612,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715311955}
   m_CullTransparentMesh: 1
---- !u!1 &1742895146
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1742895148}
-  - component: {fileID: 1742895147}
-  m_Layer: 0
-  m_Name: SolveProblemEvaluator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1742895147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742895146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7035271e3e8834e9d6c7111dc33520, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalDivider: -2.3
-  workSpace: {fileID: 2105501415}
---- !u!4 &1742895148
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742895146}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3020797, y: -0.40901428, z: -0.12539165}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746144736
 GameObject:
   m_ObjectHideFlags: 0
@@ -5873,10 +5872,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1968816472}
         m_TargetAssemblyTypeName: TileInteraction, Assembly-CSharp
         m_MethodName: CancelOut
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1796966751}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6918,7 +6917,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2105501416}
   - component: {fileID: 2105501418}
-  - component: {fileID: 2105501417}
   m_Layer: 3
   m_Name: Workspaces
   m_TagString: Workspace
@@ -6937,41 +6935,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 567986208}
   - {fileID: 248083663}
+  - {fileID: 567986208}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &2105501417
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105501415}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.06291413, y: -1.7682092}
-      - {x: -7.0956426, y: -1.7461686}
-      - {x: -7.1098537, y: -3.0739155}
-      - {x: 2.9365687, y: -2.9690588}
-      - {x: 2.985271, y: -1.7671399}
 --- !u!61 &2105501418
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6985,7 +6953,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.0342133, y: 0.3565117}
+  m_Offset: {x: -2.034213, y: -1.0132031}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6996,7 +6964,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.0176525, y: 1.2935979}
+  m_Size: {x: 10.0176525, y: 4.0330276}
   m_EdgeRadius: 0
 --- !u!1 &2107234062
 GameObject:

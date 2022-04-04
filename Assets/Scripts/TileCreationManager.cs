@@ -67,25 +67,26 @@ public class TileCreationManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
 
             // modify this to allow multiple squares if necessary, or to allow changing which workspace is being checked
-            if(hit.collider == allowedArea.GetComponent<BoxCollider2D>())
+            if (hit.collider == allowedArea.GetComponent<BoxCollider2D>())
             {
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = Mathf.Abs(viewCamera.transform.position.z);
                 Vector3 tilePos = viewCamera.ScreenToWorldPoint(mousePos);
                 tilePos.z = -1.5f;
 
-                if(onesTileOn){
+                if (onesTileOn)
+                {
                     GameObject newTile = Instantiate(onesTile, tilePos, Quaternion.identity);
                     newTile.transform.parent = hit.collider.transform;
                     TileSnapping.trySnap(newTile);
-                }else if(xTileOn){
+                }
+                else if (xTileOn)
+                {
                     GameObject newTile = Instantiate(xTile, tilePos, Quaternion.identity);
                     newTile.transform.parent = hit.collider.transform;
                     TileSnapping.trySnap(newTile);
                 }
-
-                //tile.tag = "Tile";
-            }   
+            }  
         }
     }
 }
