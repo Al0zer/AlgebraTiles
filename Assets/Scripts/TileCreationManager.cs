@@ -54,13 +54,6 @@ public class TileCreationManager : MonoBehaviour
             Destroy(obj);
         }
     }
-
-    //return to start screen
-    public void HomeButton()
-    {
-        SceneManager.LoadScene(0);
-    }
-
     public void DisableTileCreation(){
         onesTileOn = false;
         xTileOn = false;
