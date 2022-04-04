@@ -30,6 +30,7 @@ public class SubProblemEvaluator : MonoBehaviour
                 }
             }
         }
+
         Debug.Log(xVal);
     }
 }

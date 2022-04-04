@@ -88,6 +88,8 @@ public class SubSteps : MonoBehaviour
             finalAnswer.SetActive(true);
             clearButton.interactable = false;
             garbageBin.SetActive(false);
+            cancelOut.interactable = false;
+            onesButton.interactable = false;
 
             if (clicked)
             {
