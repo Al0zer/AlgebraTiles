@@ -2211,6 +2211,7 @@ MonoBehaviour:
   xButton: {fileID: 758976930}
   x2Button: {fileID: 496595724}
   stepText: {fileID: 95169880}
+  interactionManager: {fileID: 1811177298}
   checkButton: {fileID: 1309295973}
   clearButton: {fileID: 1487276806}
   cancelOutButton: {fileID: 2092697177}
@@ -5011,7 +5012,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragDistance: 0.05
   horizontalDivider: -2.3
-  garbageBin: {fileID: 1291287876}
+  workspace: {fileID: 0}
+  dragToDelete: 1
+  allowSignChange: 1
 --- !u!4 &1811177299
 Transform:
   m_ObjectHideFlags: 0

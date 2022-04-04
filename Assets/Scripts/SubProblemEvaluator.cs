@@ -10,7 +10,6 @@ public class SubProblemEvaluator : MonoBehaviour
     public void EvaluateWorkSpace()
     {
         int oneCount = 0;
-        int xCount = 1;
 
         foreach(Transform child in workSpace.transform)
         {
@@ -29,8 +28,6 @@ public class SubProblemEvaluator : MonoBehaviour
                 }
             }
         }
-
-        SymbolicMathProblem.SubstituteTypeProblem problem = new SymbolicMathProblem.SubstituteTypeProblem(oneCount, oneCount, xCount);
-        Debug.Log(problem.ToString());
+        Debug.Log(oneCount);
     }
 }

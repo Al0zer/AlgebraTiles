@@ -7,7 +7,11 @@ using TMPro;
 
 public class SubSteps : MonoBehaviour
 {
-    private int problemStep = 0;
+    private int problemStep;
+
+    public GameObject workspace;
+    public TileCreationManager creationManager;
+    public TileInteraction interactionManager;
 
     public Toggle onesButton;
     public Toggle xButton;
@@ -16,12 +20,16 @@ public class SubSteps : MonoBehaviour
     public TextMeshProUGUI stepText1;
     public TextMeshProUGUI stepText2;
     public GameObject finalAnswer;
+    public GameObject endPanel;
 
     public Button check1;
     public Button check2;
     public Button check3;
     public Button clearButton;
     public GameObject garbageBin;
+
+    private SymbolicMathProblem.SubstituteTypeProblem problem;
+    public TextMeshProUGUI problemText;
 
     private bool clicked;
 
@@ -32,6 +40,8 @@ public class SubSteps : MonoBehaviour
         check1.onClick.AddListener(TaskOnClick);
         check2.onClick.AddListener(TaskOnClick);
         check3.onClick.AddListener(TaskOnClick);
+
+        this.ResetBoard();
     }
 
     // Update is called once per frame
@@ -76,7 +86,7 @@ public class SubSteps : MonoBehaviour
             garbageBin.SetActive(false);
             if (clicked)
             {
-                Debug.Log("cool");
+                endPanel.SetActive(true);
             }
         }
     }
@@ -84,5 +94,32 @@ public class SubSteps : MonoBehaviour
     public void TaskOnClick()
     {
         clicked = true;
+    }
+
+    public void SkipQuestion()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void generateNewProblem()
+    {
+        problem = SymbolicMathProblemGenerator.generateSubstituteProblem();
+        problemText.text = problem.ToString();
+    }
+
+    public void ResetBoard()
+    {
+        problemStep = 0;
+        garbageBin.SetActive(true);
+        finalAnswer.SetActive(false);
+        this.generateNewProblem();
+        cancelOut.gameObject.SetActive(false);
+        onesButton.gameObject.SetActive(true);
+        xButton.gameObject.SetActive(true);
+        onesButton.isOn = false;
+        xButton.isOn = false;
+        cancelOut.isOn = false;
+        interactionManager.ResetCancelOut();
+        interactionManager.allowSignChange = true;
     }
 }
