@@ -16,9 +16,9 @@ public class PopulateHighscores : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        solveSubText.text = "Completed questions: "+ PlayerPrefs.GetInt("SolveSub", 0);
-        substituteSubText.text = "Completed questions: "+ PlayerPrefs.GetInt("SubstituteSub", 0);
-        expandSubText.text = "Completed questions: "+ PlayerPrefs.GetInt("ExpandSub", 0);
-        factorSubText.text = "Completed questions: "+ PlayerPrefs.GetInt("FactorSub", 0);
+        solveSubText.text = "Completed questions: "+ PlayerPrefs.GetInt("SolveCompleted", 0);
+        substituteSubText.text = "Completed questions: "+ PlayerPrefs.GetInt("SubstituteCompleted", 0);
+        expandSubText.text = "Completed questions: "+ PlayerPrefs.GetInt("ExpandCompleted", 0);
+        factorSubText.text = "Completed questions: "+ PlayerPrefs.GetInt("FactorCompleted", 0);
     }
 }
