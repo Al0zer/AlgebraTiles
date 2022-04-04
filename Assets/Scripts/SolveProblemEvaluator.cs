@@ -8,9 +8,8 @@ public class SolveProblemEvaluator : MonoBehaviour
     public float horizontalDivider;
     // the parent of where all the children are
     public GameObject workSpace;
-    // Start is called before the first frame update
+    public SymbolicMathProblem.SolveTypeProblem problem;
 
-    // Update is called once per frame
     public void EvaluateWorkSpace(){
         int leftSideOneCount = 0;
         int leftSideXCount = 0;
@@ -51,7 +50,7 @@ public class SolveProblemEvaluator : MonoBehaviour
             }
         }
 
-        SymbolicMathProblem.SolveTypeProblem problem = new SymbolicMathProblem.SolveTypeProblem(leftSideXCount, leftSideOneCount, rightSideXCount, rightSideOneCount);
+        problem = new SymbolicMathProblem.SolveTypeProblem(leftSideXCount, leftSideOneCount, rightSideXCount, rightSideOneCount);
 
         Debug.Log(problem.ToString());
     }
