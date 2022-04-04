@@ -9,7 +9,9 @@ public class SubProblemEvaluator : MonoBehaviour
 
     public void EvaluateWorkSpace()
     {
-        int oneCount = 0;
+        int xVal = 0;
+        int leftSideOnes = 0;
+        int leftSideX = 0;
 
         foreach(Transform child in workSpace.transform)
         {
@@ -19,15 +21,15 @@ public class SubProblemEvaluator : MonoBehaviour
             {
                 if (childObject.CompareTag("PositiveOne"))
                 {
-                    oneCount++;
+                    xVal++;
                 }
 
                 else if (childObject.CompareTag("NegativeOne"))
                 {
-                    oneCount--;
+                    xVal--;
                 }
             }
         }
-        Debug.Log(oneCount);
+        Debug.Log(xVal);
     }
 }

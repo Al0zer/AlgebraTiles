@@ -21,6 +21,7 @@ public class SubSteps : MonoBehaviour
     public TextMeshProUGUI stepText2;
     public GameObject finalAnswer;
     public GameObject endPanel;
+    public GameObject incorrectPanel;
 
     public Button check1;
     public Button check2;
@@ -30,6 +31,9 @@ public class SubSteps : MonoBehaviour
 
     private SymbolicMathProblem.SubstituteTypeProblem problem;
     public TextMeshProUGUI problemText;
+
+    public TMP_InputField input;
+    private string inputAnswer = "";
 
     private bool clicked;
 
@@ -84,11 +88,34 @@ public class SubSteps : MonoBehaviour
             finalAnswer.SetActive(true);
             clearButton.interactable = false;
             garbageBin.SetActive(false);
+
             if (clicked)
             {
-                endPanel.SetActive(true);
+                inputAnswer = input.text;
+                int correctAnswer = SymbolicMathProblemSolver.DoSubstitute(problem);
+                int userAnswer;
+
+                if (int.TryParse(inputAnswer, out userAnswer) && userAnswer == correctAnswer)
+                {
+                    // increment score
+                    PlayerPrefs.SetInt("SubstituteCompleted", PlayerPrefs.GetInt("SubstituteCompleted", 0) + 1);
+                    endPanel.SetActive(true);
+                }
+
+                else
+                {
+                    clicked = false;
+                    incorrectPanel.SetActive(true);
+                    StartCoroutine(RemoveIncorrectPanel());
+                }
             }
         }
+    }
+
+    IEnumerator RemoveIncorrectPanel()
+    {
+        yield return new WaitForSeconds(3);
+        incorrectPanel.SetActive(false);
     }
 
     public void TaskOnClick()

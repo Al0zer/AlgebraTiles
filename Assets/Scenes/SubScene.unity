@@ -4568,12 +4568,14 @@ MonoBehaviour:
   stepText2: {fileID: 1836817993}
   finalAnswer: {fileID: 1339705093}
   endPanel: {fileID: 914985755}
+  incorrectPanel: {fileID: 1395309713}
   check1: {fileID: 1402757894}
   check2: {fileID: 1627245967}
   check3: {fileID: 475809235}
   clearButton: {fileID: 2142777072}
   garbageBin: {fileID: 1936303369}
   problemText: {fileID: 1427695396}
+  input: {fileID: 646854437}
 --- !u!1 &1792290004
 GameObject:
   m_ObjectHideFlags: 0
