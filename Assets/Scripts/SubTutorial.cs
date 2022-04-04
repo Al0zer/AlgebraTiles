@@ -21,7 +21,7 @@ public class SubTutorial : MonoBehaviour
     public Button checkButton2;
     public Button checkButton3;
 
-    public Button cancelOutButton;
+    public Toggle cancelOutButton;
     public Button clearButton;
     public GameObject garbageBin;
 

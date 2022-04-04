@@ -25,7 +25,7 @@ public class SolveTutorial : MonoBehaviour
 
     public Button checkButton;
     public Button clearButton;
-    public Button cancelOutButton;
+    public Toggle cancelOutButton;
     public GameObject garbageBin;
 
     public TMP_InputField input;
@@ -127,7 +127,7 @@ public class SolveTutorial : MonoBehaviour
         }
 
         //move blocks left and right to isolate x
-        //check that model equals 3 - 1 = x
+        //check that model equals 3 - 1 = x AKA 2 = x
         else if (infoIndex == 4)
         {
             stepText.text = ("Step 2: Solve for x");
