@@ -15,6 +15,7 @@ public class SubTutorial : MonoBehaviour
 
     public GameObject finalAnswer;
     public GameObject EndPanel;
+    public GameObject incorrectPanel;
 
     public Button checkButton1;
     public Button checkButton2;
@@ -32,6 +33,9 @@ public class SubTutorial : MonoBehaviour
     public TextMeshProUGUI step3;
 
     private bool clicked = false;
+
+    public TMP_InputField input;
+    private string inputAnswer = "";
 
     // Start is called before the first frame update
     void Start()
@@ -108,6 +112,7 @@ public class SubTutorial : MonoBehaviour
         }
 
         //making ones tile negative
+        //need to actually check it's negative
         if (infoIndex == 3)
         {
             if (clicked)
@@ -122,6 +127,7 @@ public class SubTutorial : MonoBehaviour
         if (infoIndex == 4)
         {
             step2.enabled = true;
+            checkButton1.interactable = false;
 
             if (clicked)
             {
@@ -157,13 +163,26 @@ public class SubTutorial : MonoBehaviour
             step3.enabled = true;
             xButton.interactable = false;
             onesButton.interactable = false;
+            checkButton1.interactable = false;
+            checkButton2.interactable = false;
 
             finalAnswer.SetActive(true);
 
             if (clicked)
             {
                 clicked = false;
-                EndPanel.SetActive(true);
+                inputAnswer = input.text;
+                if (inputAnswer == "3")
+                {
+                    EndPanel.SetActive(true);
+                }
+
+                else
+                {
+                    clicked = false;
+                    incorrectPanel.SetActive(true);
+                    StartCoroutine(RemoveIncorrectPanel());
+                }
             }
         }
     }
@@ -177,5 +196,11 @@ public class SubTutorial : MonoBehaviour
     public void GoToSub()
     {
         SceneManager.LoadScene(4);
+    }
+
+    IEnumerator RemoveIncorrectPanel()
+    {
+        yield return new WaitForSeconds(1);
+        incorrectPanel.SetActive(false);
     }
 }

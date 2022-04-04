@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 108522116}
   - component: {fileID: 108522115}
   - component: {fileID: 108522117}
+  - component: {fileID: 108522118}
   m_Layer: 3
   m_Name: WorkSpace
   m_TagString: Workspace
@@ -405,6 +406,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9076244, y: 0.8468366}
   m_EdgeRadius: 0
+--- !u!60 &108522118
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108522114}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.44505042, y: 0.42164603}
+      - {x: -0.45054537, y: -0.41418377}
+      - {x: 0.45970365, y: -0.41418368}
+      - {x: 0.457872, y: 0.42910826}
 --- !u!1 &171670445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,6 +2040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 772926172}
   - component: {fileID: 772926171}
+  - component: {fileID: 772926173}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -2051,7 +2082,6 @@ MonoBehaviour:
   cancelOutButton: {fileID: 2092697177}
   garbageBin: {fileID: 1291287876}
   input: {fileID: 332457848}
-  inputAnswer: 
 --- !u!4 &772926172
 Transform:
   m_ObjectHideFlags: 0
@@ -2066,6 +2096,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &772926173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772926170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda2172555e537c4f8d9dea8adb1f1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &811389513
 GameObject:
   m_ObjectHideFlags: 0
