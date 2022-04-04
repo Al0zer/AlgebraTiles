@@ -15,13 +15,26 @@ public class SymbolicMathProblemGenerator
             c -= 3;
         }
 
-        int b = Random.Range(-4, 4);
+        int b = Random.Range(0, 7);
+
+        if(b > 3)
+        {
+            b -= 3;
+        }
+        else
+        {
+            b -= 4;
+        }
 
         int d = (a-c) * x + b;
 
         if(d >= 8){
             b -= d/2;
             d -= d/2;
+        }else if(d <= -8)
+        {
+            b += d / 2;
+            d += d / 2;
         }
         
         // randomly swap sides of equation to make it look more diverse

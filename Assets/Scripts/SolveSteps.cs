@@ -86,6 +86,7 @@ public class SolveSteps : MonoBehaviour
             garbageBin.SetActive(false);
             interactionManager.dragToDelete = false;
             interactionManager.allowSignChange = false;
+            clearButton.gameObject.SetActive(false);
 
             creationManager.DisableTileCreation();
 
@@ -192,6 +193,6 @@ public class SolveSteps : MonoBehaviour
         cancelOutButton.isOn = false;
         interactionManager.ResetCancelOut();
         interactionManager.allowSignChange = true;
-
+        clearButton.gameObject.SetActive(true);
     }
 }
