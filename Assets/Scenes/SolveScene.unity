@@ -4539,7 +4539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragDistance: 0.05
   horizontalDivider: -2.3
-  garbageBin: {fileID: 1291287876}
+  workspace: {fileID: 108522114}
 --- !u!4 &1811177299
 Transform:
   m_ObjectHideFlags: 0

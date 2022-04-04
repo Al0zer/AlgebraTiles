@@ -84,13 +84,20 @@ public class SolveSteps : MonoBehaviour
             xButton.gameObject.SetActive(false);
             cancelOutButton.gameObject.SetActive(true);
             garbageBin.SetActive(false);
+            interactionManager.dragToDelete = false;
+            interactionManager.allowSignChange = false;
 
             creationManager.DisableTileCreation();
 
             if (clicked)
             {
                 SymbolicMathProblem.SolveTypeProblem currentWorkspace = evaluator.EvaluateWorkSpace();
-                if (currentWorkspace.leftSide[SymbolicEquation.MathSymbol.X] == 0 && currentWorkspace.rightSide[SymbolicEquation.MathSymbol.ONE] == 0)
+                if(!evaluator.PairsEliminated()){
+                    errorMessage.text = "There are still pairs to cancel out!";
+                    incorrectPanel.SetActive(true);
+                    StartCoroutine(RemoveIncorrectPanel());
+                }
+                else if (currentWorkspace.leftSide[SymbolicEquation.MathSymbol.X] == 0 && currentWorkspace.rightSide[SymbolicEquation.MathSymbol.ONE] == 0)
                 {
                     // no X on one side and no ones on other side
                     problemStep++;
@@ -174,6 +181,7 @@ public class SolveSteps : MonoBehaviour
         input.text = "";
         problemStep = 0;
         garbageBin.SetActive(true);
+        interactionManager.dragToDelete = true;
         finalAnswer.SetActive(false);
         this.generateNewProblem();
         cancelOutButton.gameObject.SetActive(false);
@@ -183,6 +191,7 @@ public class SolveSteps : MonoBehaviour
         xButton.isOn = false;
         cancelOutButton.isOn = false;
         interactionManager.ResetCancelOut();
+        interactionManager.allowSignChange = true;
 
     }
 }

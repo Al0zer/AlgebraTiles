@@ -23,6 +23,8 @@ public class SolveTutorial : MonoBehaviour
 
     public TextMeshProUGUI stepText;
 
+    public TileInteraction interactionManager;
+
     public Button checkButton;
     public Button clearButton;
     public Toggle cancelOutButton;
@@ -137,6 +139,8 @@ public class SolveTutorial : MonoBehaviour
             xButton.interactable = false;
             clearButton.interactable = false;
             garbageBin.SetActive(false);
+            interactionManager.dragToDelete = false;
+            
 
             creationManager.DisableTileCreation();
 

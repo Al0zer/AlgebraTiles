@@ -9,13 +9,19 @@ public class TileInteraction : MonoBehaviour
 
     public float horizontalDivider;
 
-    public GameObject garbageBin;
+    public GameObject workspace;
     private Vector2 clickDownPosition;
+
+    private Vector3 tileStartPosition;
     private GameObject targetTile;
 
     private bool leftSideOfWorkspace = false;
 
     private bool dragging = false;
+
+    public bool dragToDelete = true;
+
+    public bool allowSignChange = true;
 
     private List<GameObject> selectedTiles;
     private bool cancelOut = false;
@@ -42,6 +48,8 @@ public class TileInteraction : MonoBehaviour
                     targetTile = hit.transform.gameObject;
 
                     leftSideOfWorkspace = targetTile.transform.position.x < horizontalDivider;
+
+                    tileStartPosition = targetTile.transform.position;
                 }
             }
             else{
@@ -78,7 +86,9 @@ public class TileInteraction : MonoBehaviour
 
                 //cancel out was not clicked, just switching tile signs
                 }else{
-                    targetTile.GetComponent<SwitchTileSign>().SwitchSign();
+                    if(allowSignChange){
+                        targetTile.GetComponent<SwitchTileSign>().SwitchSign();
+                    }
                 }
 
             }else{
@@ -86,13 +96,16 @@ public class TileInteraction : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit;
 
-                hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("UI"));
+                hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, LayerMask.GetMask("WorkSpace"));
 
-                if(hit.transform != null){
-                    if(hit.transform.gameObject == garbageBin)
-                    {
+                if(hit.transform == null){
+                    if(dragToDelete){
                         Destroy(targetTile);
                     }
+                    else{
+                        targetTile.transform.position = tileStartPosition;
+                    }
+                
                 }
 
                 TileSnapping.trySnap(targetTile);

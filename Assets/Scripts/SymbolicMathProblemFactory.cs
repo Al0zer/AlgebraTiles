@@ -5,13 +5,31 @@ using UnityEngine;
 public class SymbolicMathProblemGenerator
 {
     public static SymbolicMathProblem.SolveTypeProblem generateSolveProblem(){
-        int addOnes = Random.Range(-5, 5);
-        int addXs = Random.Range(-5, 5);
-        int leftSideOnes = addOnes;
-        int leftSideX = Random.Range(-5, 5) + addXs;
-        int rightSideOnes = Random.Range(-5, 5) + addOnes;
-        int rightSideX = addXs;
-        return new SymbolicMathProblem.SolveTypeProblem(leftSideX, leftSideOnes, rightSideX, rightSideOnes);
+        int x = Random.Range(-5, 5);
+        int a = Random.Range(-5, 5);
+        int c = Random.Range(a, a+6);
+
+        if(c > a+2){ // 3, 4, 5
+            c -= 2;
+        }else{ // 0, 1, 2
+            c -= 3;
+        }
+
+        int b = Random.Range(-4, 4);
+
+        int d = (a-c) * x + b;
+
+        if(d >= 8){
+            b -= d/2;
+            d -= d/2;
+        }
+        
+        // randomly swap sides of equation to make it look more diverse
+        if(Random.Range(0, 1) == 1){
+            return new SymbolicMathProblem.SolveTypeProblem(a, b, c, d);
+        }else{
+            return new SymbolicMathProblem.SolveTypeProblem(c, d, a, b);
+        }
     }
 
     public static SymbolicMathProblem.SubstituteTypeProblem generateSubstituteProblem() {
