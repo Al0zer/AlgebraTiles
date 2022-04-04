@@ -15,6 +15,7 @@ public class SolveTutorial : MonoBehaviour
 
     public GameObject finalAnswer;
     public GameObject EndPanel;
+    public GameObject incorrectPanel;
 
     public Toggle onesButton;
     public Toggle xButton;
@@ -27,11 +28,17 @@ public class SolveTutorial : MonoBehaviour
     public Button cancelOutButton;
     public GameObject garbageBin;
 
+    public TMP_InputField input;
+    private string inputAnswer = "";
+
     private bool clicked = false;
+
+    SolveProblemEvaluator evaluator; 
 
     void Start()
     {
         checkButton.onClick.AddListener(TaskOnClick);
+        evaluator = FindObjectOfType<SolveProblemEvaluator>();
     }
 
     // Update is called once per frame
@@ -79,8 +86,6 @@ public class SolveTutorial : MonoBehaviour
         }
 
         //making x tile negative
-        //should check if the user clicked on the x tile, then moves onto the next step
-        //but it aint working lol
         else if (infoIndex == 2)
         {
             if (Input.GetMouseButtonDown(0))
@@ -99,19 +104,30 @@ public class SolveTutorial : MonoBehaviour
         }
 
         //building the rest of the model
+        //checks that the model is equal to -x + 3 = 1 
         else if (infoIndex == 3)
         {
             onesButton.interactable = true;
+
             if (clicked)
             {
-                clicked = false;
-                infoIndex++;
+                if (evaluator.problem.ToString() == "-x + 3 = 1")
+                {
+                    clicked = false;
+                    infoIndex++;
+                }
+
+                else
+                {
+                    clicked = false;
+                    incorrectPanel.SetActive(true);
+                    StartCoroutine(RemoveIncorrectPanel());
+                }
             }
         }
 
         //move blocks left and right to isolate x
-        //I wanna temporarily disable the tile's sign switching script, so the user can drag 
-        //tiles without accidentally changing their signs
+        //check that model equals 3 - 1 = x
         else if (infoIndex == 4)
         {
             stepText.text = ("Step 2: Solve for x");
@@ -123,17 +139,24 @@ public class SolveTutorial : MonoBehaviour
 
             creationManager.DisableTileCreation();
 
-            //GameObject.FindWithTag("Tile").GetComponent<SwitchTileSign>().enabled = false;
-
             if (clicked)
             {
-                clicked = false;
-                infoIndex++;
+                if(evaluator.problem.ToString() == "2 = x")
+                {
+                    clicked = false;
+                    infoIndex++;
+                }
+
+                else
+                {
+                    clicked = false;
+                    incorrectPanel.SetActive(true);
+                    StartCoroutine(RemoveIncorrectPanel());
+                }
             }
         }
 
         //cancel out tiles
-        //still gotta do this one lol
         else if (infoIndex == 5)
         {
             onesButton.gameObject.SetActive(false);
@@ -158,7 +181,18 @@ public class SolveTutorial : MonoBehaviour
             if (clicked)
             {
                 clicked = false;
-                EndPanel.SetActive(true);
+                inputAnswer = input.text;
+                if(inputAnswer == "2")
+                {
+                    EndPanel.SetActive(true);
+                }
+
+                else
+                {
+                    clicked = false;
+                    incorrectPanel.SetActive(true);
+                    StartCoroutine(RemoveIncorrectPanel());
+                }
             }
         }
     }
@@ -172,5 +206,11 @@ public class SolveTutorial : MonoBehaviour
     public void GoToSolve()
     {
         SceneManager.LoadScene(2);
+    }
+
+    IEnumerator RemoveIncorrectPanel()
+    {
+        yield return new WaitForSeconds(1);
+        incorrectPanel.SetActive(false);
     }
 }
