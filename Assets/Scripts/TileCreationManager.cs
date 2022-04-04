@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TileCreationManager : MonoBehaviour
 {
@@ -11,7 +11,6 @@ public class TileCreationManager : MonoBehaviour
     public GameObject allowedArea;
     private bool onesTileOn = false;
     private bool xTileOn = false;
-
     private Camera viewCamera;
 
     // Start is called before the first frame update
@@ -21,10 +20,10 @@ public class TileCreationManager : MonoBehaviour
     }
 
     //if the ones tile button was pressed
-    public void OnesTile()
+    public void OnesTile(Toggle activated)
     {
         //if tiles button hasn't already been pressed
-        onesTileOn = !onesTileOn;
+        onesTileOn = activated.isOn;
         xTileOn = false;
     }
 
@@ -34,9 +33,9 @@ public class TileCreationManager : MonoBehaviour
     }
 
     //if the x tile button was pressed
-    public void XTile()
+    public void XTile(Toggle activated)
     {
-        xTileOn = !xTileOn;
+        xTileOn = activated.isOn;
         onesTileOn = false;
     }
 
@@ -68,8 +67,7 @@ public class TileCreationManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
 
             // modify this to allow multiple squares if necessary, or to allow changing which workspace is being checked
-            if((hit.collider == allowedArea.GetComponent<BoxCollider2D>())
-                || hit.collider == allowedArea.GetComponent<PolygonCollider2D>())
+            if(hit.collider == allowedArea.GetComponent<BoxCollider2D>())
             {
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = Mathf.Abs(viewCamera.transform.position.z);

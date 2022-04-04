@@ -25,7 +25,7 @@ public class SolveSteps : MonoBehaviour
 
     public Button checkButton;
     public Button clearButton;
-    public Button cancelOutButton;
+    public Toggle cancelOutButton;
     public GameObject garbageBin;
 
     public TMP_InputField input;
@@ -137,6 +137,7 @@ public class SolveSteps : MonoBehaviour
                     clicked = false;
                     incorrectPanel.SetActive(true);
                     StartCoroutine(RemoveIncorrectPanel());
+                    Debug.Log("Received input: " + inputAnswer + " Correct answer: " + correctAnswer);
                 }
             }
         }
@@ -178,6 +179,9 @@ public class SolveSteps : MonoBehaviour
         cancelOutButton.gameObject.SetActive(false);
         onesButton.gameObject.SetActive(true);
         xButton.gameObject.SetActive(true);
+        onesButton.isOn = false;
+        xButton.isOn = false;
+        cancelOutButton.isOn = false;
         interactionManager.ResetCancelOut();
 
     }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TileInteraction : MonoBehaviour
 {
@@ -61,14 +62,17 @@ public class TileInteraction : MonoBehaviour
                         selectedTiles.RemoveAt(0);
                     }
 
-                    if ((selectedTiles[0].tag == "PositiveOne" && selectedTiles[1].tag == "NegativeOne")
-                        || (selectedTiles[0].tag == "NegativeOne"&& selectedTiles[1].tag == "PositiveOne")
-                        || (selectedTiles[0].tag == "PositiveX" && selectedTiles[1].tag == "NegativeX")
-                        || (selectedTiles[0].tag == "NegativeX" && selectedTiles[1].tag == "PositiveX"))
-                    {
-                        Destroy(selectedTiles[0]);
-                        Destroy(selectedTiles[1]);
-                        selectedTiles.Clear();
+                    if(selectedTiles.Count == 2){
+
+                        if ((selectedTiles[0].tag == "PositiveOne" && selectedTiles[1].tag == "NegativeOne")
+                            || (selectedTiles[0].tag == "NegativeOne"&& selectedTiles[1].tag == "PositiveOne")
+                            || (selectedTiles[0].tag == "PositiveX" && selectedTiles[1].tag == "NegativeX")
+                            || (selectedTiles[0].tag == "NegativeX" && selectedTiles[1].tag == "PositiveX"))
+                        {
+                            Destroy(selectedTiles[0]);
+                            Destroy(selectedTiles[1]);
+                            selectedTiles.Clear();
+                        }
                     }
                 
 
@@ -127,15 +131,13 @@ public class TileInteraction : MonoBehaviour
 
    
 
-    public void CancelOut()
+    public void CancelOut(Toggle change)
     {
-        //if cancel out button hasn't already been pressed
-        if (!cancelOut)
+
+        if (change.isOn)
         {
             cancelOut = true;
         }
-
-        //cancel out was already pressed, now turning it off
         else
         {
             selectedTiles.Clear();
