@@ -86,7 +86,6 @@ public class SolveTutorial : MonoBehaviour
         }
 
         //making x tile negative
-        //but it aint working lol
         else if (infoIndex == 2)
         {
             if (Input.GetMouseButtonDown(0))
